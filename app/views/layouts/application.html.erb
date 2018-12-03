@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  
+
+    <title>Van</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <b><%= link_to "Home", root_path, class: "navbar-brand" %></b>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <li class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <%= link_to "About Us", about_us_url, class: "nav-link" %><span class="sr-only">current</span>
+      </li>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+
+  
+
+    <% if flash[:error] %>
+<div id="error">
+<%= flash[:error] %>
+</div>
+<% end %>
+<div id="container">
+<div id="user_status">
+  <% if user_signed_in? %>
+
+
+    Welcome
+    <%= current_user.email %>! Not you?<br>
+    <% if current_user.role_id==1 %>
+
+       <%#= link_to "Dashboard", '/admin/dashboard' %>
+
+      <col-md-6 class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <b><%= link_to "dashboard",  '/admin/dashboard' %></b>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <% end %>
+
+
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0"%>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path,class: "btn btn-outline-success my-2 my-sm-0" %>
+    or
+    <%= link_to "Sign in", new_user_session_path,class: "btn btn-outline-success my-2 my-sm-0" %>.
+
+
+
+  <% end %>
+
+  <% if user_signed_in? %>
+    <% if current_user.role_id==3 %>
+      <b><col-md-6>< <%= link_to "Dashboard", '/admin/dashboard',class: "navbar-brand" %></b>
+      <b> <%= link_to "Schedule", '/schedules', class: "navbar-brand" %></b>
+      <b> <%= link_to "Check Bookings", '/projects', class: "navbar-brand" %></b>
+      </col-md-6>
+      </div>
+      </div>
+      </ul>
+      </div>
+      </nav>
+
+
+    <% end %>
+  <%end %>
+
+  </nav>
+
+</div>
+</div>
+  </ul>
+</div>
+</nav>
+<%= yield %>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
+
+    <div class="bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="copyright">
+          <p>© Copyright <a href="#">web14</a> 2018. All Rights Reserved.<br> Contact number : 0633011984<br> Email : st120090@ait.asia, aarnica1@gmail.com
+          </p>
+          <a href="https://validator.w3.org/">HTML Syntax Validation</a><br>
+          <a href="https://trello.com/b/cOurfV1i/web14">Issue Tracker</a>
+        </div>
+      </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div>
+
+  </body>
+</html>

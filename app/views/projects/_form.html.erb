@@ -1,0 +1,48 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.label :Name %>
+
+      <%= form.text_field :name, autocomplete: "on" %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :Destination %>
+    <fieldset>
+      <%= form.select :field_type, %w{Mochit VictoryMonument} %></fieldset>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :Time %>
+    <%= form.time_field :time, id: :project_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %><br />
+    <%= form.text_field :contact, autocomplete: "on" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, "Email" %><br />
+    <%= form.email_field :email, autofocus: "on" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

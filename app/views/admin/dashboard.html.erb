@@ -1,0 +1,23 @@
+<h2>Admin Dashboard page</h2>
+<br>
+<br>
+
+<br>
+<a href="/">Home</a>
+<table>
+
+  <% for user in @users %>
+    <% if user.role_id!=1 %>
+      <tr>
+        <td>
+          <br>EMAIL:<%= h user.email %> &nbsp USER ID:<%= h user.id %> &nbsp DATE JOINED:<%= h user.created_at%>&nbsp STATUS:
+          <% if user.is_ban!=true  %>
+            <a href="/admin/ban/<%= user.id%> ">Ban</a>
+          <% else %>
+            <a href="/admin/permit/<%= user.id%> ">Permit</a>
+          <% end %>
+        </td>
+      </tr>
+    <%end %>
+  <% end %>
+</table>

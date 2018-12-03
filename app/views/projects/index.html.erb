@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Van Timings </h2>
+
+
+          <div class="image.jpg">
+          </div>
+   
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th>Destination</th>
+      <th>Time</th>
+      <th>Phone number</th>
+      <th>Email</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.book %></td>
+        <td><%= project.time %></td>
+        <td><%= project.contact %></td>
+        <td><%= project.email %></td>
+
+        <td><%= link_to 'Show', project,class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project),class:"btn btn-success" %></td>
+        <td><%= link_to 'X', project, method: :delete, data: { confirm: 'Are you sure?',class:"btn btn-success" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+<%#= link_to 'Book Van', new_project_path %>
