@@ -2,10 +2,10 @@
 
 <h1>Van timings</h1>
 
-<%#= form_tag(schedules_index_path,  method: :get) do %>
-  <%#= text_field_tag :destination %>
-  <%#= submit_tag 'Search' %>
-<%# end %>
+<%= form_tag(schedules_path,  method: :get) do %>
+  <%= text_field_tag :destination %>
+  <%= submit_tag 'Search' %>
+<% end %>
 
 
 <table class="table">

@@ -6,6 +6,9 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all
+    if params[:destination]
+      @schedules = @schedules.where('lower(destination) LIKE ?', "%#{params[:destination].downcase}%")
+    end
   end
 
   # GET /schedules/1
